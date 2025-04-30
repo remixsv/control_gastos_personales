@@ -193,7 +193,7 @@ class MyApp extends StatelessWidget {
     return Consumer<ThemeProvider>(
       builder: (context, themeProvider, child) {
         return MaterialApp(
-          title: 'CashFlow',
+          title: 'EasyMoney',
           themeMode: themeProvider.themeMode,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -268,7 +268,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                 const Text(
                   'EasyMoney!',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
