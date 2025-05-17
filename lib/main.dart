@@ -569,11 +569,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               child: Text(index == -1 ? 'Agregar' : 'Actualizar'),
               onPressed: () {
-                if (description.isEmpty || amount == 0.0) {
+                bool formatValid(double numero) {
+                String numeroStr = numero.toString();
+                RegExp regex = RegExp(r'^\d+(\.\d{1,2})?$');
+                return regex.hasMatch(numeroStr);
+                }
+                bool isFormatValid = formatValid(amount);
+                String descriptionText1 = 'Por favor, complete la descripción y el monto.';
+                if (description.isEmpty || amount == 0.0 || !isFormatValid) {
+                  if(!isFormatValid){
+                    descriptionText1 = 'El monto ingresado es inválido';
+                  }
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
+                    SnackBar(
                       content: Text(
-                        'Por favor, complete la descripción y el monto.',
+                        descriptionText1,
                       ),
                       backgroundColor: Colors.redAccent,
                     ),
